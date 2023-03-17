@@ -13,13 +13,16 @@ try:
     if number_range > 0:
         user_array = [randint(-10, 10) for _ in range(number_range)]
         print(f'Массив: {user_array}')
-        close_element = user_array[0]
+        close_element = {user_array[0]}
         difference = abs(number - user_array[0])
         for i in range(1, number_range):
             if abs(user_array[i] - number) < difference:
-                close_element = user_array[i]
+                close_element.clear()
+                close_element.add(user_array[i])
                 difference = abs(number - user_array[i])
-        print(f'Самый близкий по величине элемент в массиве к числу {number} - {close_element}')
+            elif abs(user_array[i] - number) == difference:
+                close_element.add(user_array[i])
+        print(f'Самый(-ые) близкий(-ие) по величине элемент(-ы) в массиве к числу {number} - {close_element}')
     else:
         print('Введено не допустимое значение')
 except:
